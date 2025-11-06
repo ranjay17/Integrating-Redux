@@ -9,7 +9,6 @@ const CounterSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-    // existing simple increment/decrement you may have
     increment(state) {
       state.value += 1;
     },
@@ -17,29 +16,33 @@ const CounterSlice = createSlice({
       state.value -= 1;
     },
 
-    // ===== New actions requested =====
-    // Action type will be "counter/INCREMENTBY2"
     INCREMENTBY2(state) {
       state.value += 2;
     },
-    // Action type will be "counter/DECREMENTBY2"
     DECREMENTBY2(state) {
       state.value -= 2;
     },
 
-    // optional generic payload-based action you may use elsewhere
+    INCREMENTBY5(state) {
+      state.value += 5;
+    },
+    DECREMENTBY5(state) {
+      state.value -= 5;
+    },
+
     incrementByAmount(state, action) {
       state.value += action.payload;
     },
   },
 });
 
-// Named exports: action creators + reducer default
 export const {
   increment,
   decrement,
   INCREMENTBY2,
   DECREMENTBY2,
+  INCREMENTBY5,
+  DECREMENTBY5,
   incrementByAmount,
 } = CounterSlice.actions;
 
