@@ -1,13 +1,12 @@
-
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   increment,
   decrement,
-  INCREMENTBY2,
-  DECREMENTBY2,
-  INCREMENTBY5,
-  DECREMENTBY5,
+  incrementBy2,
+  decrementBy2,
+  incrementBy5,
+  decrementBy5,
 } from "../redux/CounterSlice";
 
 export default function CounterComponent() {
@@ -15,22 +14,23 @@ export default function CounterComponent() {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div style={{ textAlign: "center", marginTop: "30px" }}>
       <h2>Counter: {value}</h2>
 
-      <button onClick={() => dispatch(decrement())}>-1</button>
-      <button onClick={() => dispatch(increment())}>+1</button>
-      <button onClick={() => dispatch(DECREMENTBY2())}>-2</button>
-      <button onClick={() => dispatch(INCREMENTBY2())}>+2</button>
+      <div style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
+        <button onClick={() => dispatch(decrement())}>-1</button>
+        <button onClick={() => dispatch(increment())}>+1</button>
+        <button onClick={() => dispatch(decrementBy2())}>-2</button>
+        <button onClick={() => dispatch(incrementBy2())}>+2</button>
+        <button onClick={() => dispatch(decrementBy5())}>-5</button>
+        <button onClick={() => dispatch(incrementBy5())}>+5</button>
+      </div>
 
-      {/* Buttons for ±5  */}
-      <button onClick={() => dispatch(DECREMENTBY5())}>-5</button>
-      <button onClick={() => dispatch(INCREMENTBY5())}>+5</button>
-
-      {/* Example of raw dispatch */}
-      <button onClick={() => dispatch({ type: "counter/INCREMENTBY2" })}>
-        +2 (raw)
-      </button>
+      <div style={{ marginTop: "15px" }}>
+        <button onClick={() => dispatch({ type: "counter/incrementBy2" })}>
+          +2 (raw dispatch)
+        </button>
+      </div>
     </div>
   );
 }
